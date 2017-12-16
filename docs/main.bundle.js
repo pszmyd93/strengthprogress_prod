@@ -57,9 +57,7 @@ var AppRoutingModule = (function () {
 }());
 AppRoutingModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-        imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(routes)
-        ],
+        imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(routes, { useHash: true })],
         exports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]
         ]
@@ -147,10 +145,11 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__treningi_cwiczenie_dodaj_cwiczenie_dodaj_cwiczenie_component__ = __webpack_require__("../../../../../src/app/treningi/cwiczenie/dodaj-cwiczenie/dodaj-cwiczenie.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__treningi_cwiczenie_seria_seria_component__ = __webpack_require__("../../../../../src/app/treningi/cwiczenie/seria/seria.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__plany_plan_treningowy_service__ = __webpack_require__("../../../../../src/app/plany/plan-treningowy.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_jquery__ = __webpack_require__("../../../../jquery/dist/jquery.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_primeng_primeng__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angular_font_awesome__ = __webpack_require__("../../../../angular-font-awesome/angular-font-awesome.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_jquery__ = __webpack_require__("../../../../jquery/dist/jquery.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_primeng_primeng__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -177,7 +176,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-window.jQuery = window.$ = __WEBPACK_IMPORTED_MODULE_17_jquery__; // This is needed to resolve issue.
+
+window.jQuery = window.$ = __WEBPACK_IMPORTED_MODULE_18_jquery__; // This is needed to resolve issue.
 var AppModule = (function () {
     function AppModule() {
     }
@@ -203,7 +203,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
             __WEBPACK_IMPORTED_MODULE_12__app_routing_module__["a" /* AppRoutingModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
-            __WEBPACK_IMPORTED_MODULE_18_primeng_primeng__["ScheduleModule"]
+            __WEBPACK_IMPORTED_MODULE_19_primeng_primeng__["ScheduleModule"],
+            __WEBPACK_IMPORTED_MODULE_17_angular_font_awesome__["a" /* AngularFontAwesomeModule */]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_16__plany_plan_treningowy_service__["a" /* PlanTreningowyService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
