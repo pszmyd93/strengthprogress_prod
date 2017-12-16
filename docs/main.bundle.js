@@ -56,12 +56,12 @@ var AppRoutingModule = (function () {
     return AppRoutingModule;
 }());
 AppRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(routes)
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"].forRoot(routes)
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["RouterModule"]
         ]
     })
 ], AppRoutingModule);
@@ -115,7 +115,7 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-root',
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -147,6 +147,10 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__treningi_cwiczenie_dodaj_cwiczenie_dodaj_cwiczenie_component__ = __webpack_require__("../../../../../src/app/treningi/cwiczenie/dodaj-cwiczenie/dodaj-cwiczenie.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__treningi_cwiczenie_seria_seria_component__ = __webpack_require__("../../../../../src/app/treningi/cwiczenie/seria/seria.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__plany_plan_treningowy_service__ = __webpack_require__("../../../../../src/app/plany/plan-treningowy.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_jquery__ = __webpack_require__("../../../../jquery/dist/jquery.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_primeng_primeng__ = __webpack_require__("../../../../primeng/primeng.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_primeng_primeng___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_primeng_primeng__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -171,13 +175,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+window.jQuery = window.$ = __WEBPACK_IMPORTED_MODULE_17_jquery__; // This is needed to resolve issue.
 var AppModule = (function () {
     function AppModule() {
     }
     return AppModule;
 }());
 AppModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_4__panel_trening_panel_trening_component__["a" /* PanelTreningComponent */],
@@ -193,9 +200,10 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15__treningi_cwiczenie_seria_seria_component__["a" /* SeriaComponent */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
             __WEBPACK_IMPORTED_MODULE_12__app_routing_module__["a" /* AppRoutingModule */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */]
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["FormsModule"],
+            __WEBPACK_IMPORTED_MODULE_18_primeng_primeng__["ScheduleModule"]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_16__plany_plan_treningowy_service__["a" /* PlanTreningowyService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
@@ -227,7 +235,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/kalendarz/kalendarz.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  kalendarz works!\n</p>\n"
+module.exports = "<p>\n  kalendarz works!\n  <br>\n  <br>\n  <br>\n  <br>\n  <p-schedule [events]=\"events\"></p-schedule>\n</p>\n"
 
 /***/ }),
 
@@ -236,6 +244,8 @@ module.exports = "<p>\n  kalendarz works!\n</p>\n"
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fullcalendar__ = __webpack_require__("../../../../fullcalendar/dist/fullcalendar.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_fullcalendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_fullcalendar__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KalendarzComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -247,15 +257,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var KalendarzComponent = (function () {
     function KalendarzComponent() {
     }
     KalendarzComponent.prototype.ngOnInit = function () {
+        this.events = [
+            {
+                "title": "All Day Event",
+                "start": "2017-12-01"
+            },
+            {
+                "title": "Long Event",
+                "start": "2017-12-07",
+                "end": "2017-12-10"
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2017-12-09T16:00:00"
+            },
+            {
+                "title": "Repeating Event",
+                "start": "2017-12-16T16:00:00"
+            },
+            {
+                "title": "Conference",
+                "start": "2017-12-11",
+                "end": "2017-12-13"
+            }
+        ];
     };
     return KalendarzComponent;
 }());
 KalendarzComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-kalendarz',
         template: __webpack_require__("../../../../../src/app/kalendarz/kalendarz.component.html"),
         styles: [__webpack_require__("../../../../../src/app/kalendarz/kalendarz.component.css")]
@@ -288,7 +323,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/panel-plany/panel-plany.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container pudlo\">\n\n  <app-miniatura></app-miniatura>\n  <app-miniatura *ngFor = \"let plan of listaPlanow; let i = index\" [planTreningowy] = \"plan\" [nr] = \"i\"></app-miniatura> <!-- ng for do napisania pobierać ma nazwy-->\n\n  <button class=\"button guzik1\" routerLink=\"plany/plan-treningowy\">Stwórz</button>\n  <button class=\"button\">Wyszukaj</button>\n\n</div>\n"
+module.exports = "<div class=\"container pudlo\">\n\n  \n  <app-miniatura *ngFor = \"let plan of listaPlanow; let i = index\" [planTreningowy] = \"plan\" [nr] = \"i\"></app-miniatura> <!-- ng for do napisania pobierać ma nazwy-->\n\n  <button class=\"button guzik1\" routerLink=\"plany/plan-treningowy\">Stwórz</button>\n  <button class=\"button\">Wyszukaj</button>\n\n</div>\n"
 
 /***/ }),
 
@@ -330,7 +365,7 @@ var PanelPlanyComponent = (function () {
     return PanelPlanyComponent;
 }());
 PanelPlanyComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-panel-plany',
         template: __webpack_require__("../../../../../src/app/panel-plany/panel-plany.component.html"),
         styles: [__webpack_require__("../../../../../src/app/panel-plany/panel-plany.component.css")]
@@ -391,7 +426,7 @@ var PanelTreningComponent = (function () {
     return PanelTreningComponent;
 }());
 PanelTreningComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-panel-trening',
         template: __webpack_require__("../../../../../src/app/panel-trening/panel-trening.component.html"),
         styles: [__webpack_require__("../../../../../src/app/panel-trening/panel-trening.component.css")]
@@ -424,7 +459,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/plany/miniatura/miniatura.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container pole-miniatury\">\r\n\r\n  \r\n  <div class=\"tytul\"><h2>{{planTreningowy.nazwaPlanu}} {{nr}}</h2></div> <!-- ma pobierać nazwę z ćwiczenia -->\r\n\r\n  <div class=\"dropdown\">\r\n    <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Opcje\r\n    <span class=\"caret\"></span></button>\r\n    <ul class=\"dropdown-menu\">\r\n      <li><a href=\"#\" [routerLink]=\"['treningi/trening',planTreningowy.nazwaPlanu,'nowy']\">Rozpocznij</a></li>\r\n      <li><a href=\"#\" [routerLink]=\"['plany/plan-treningowy',planTreningowy.nazwaPlanu,'edit']\">Edytuj</a></li>\r\n      <li><button (click)=\"usun(planTreningowy.nazwaPlanu)\">Usuń</button></li>\r\n    </ul>\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container pole-miniatury\">\r\n\r\n  \r\n  <div class=\"tytul\"><h2>{{planTreningowy.nazwaPlanu}} {{nr}}</h2></div> <!-- ma pobierać nazwę z ćwiczenia -->\r\n\r\n  <div class=\"dropdown\">\r\n    <button class=\"btn btn-primary dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">Opcje\r\n    <span class=\"caret\"></span></button>\r\n    <ul class=\"dropdown-menu\">\r\n      <li><a href=\"#\" [routerLink]=\"['treningi/trening',planTreningowy.nazwaPlanu,'nowy']\">Rozpocznij</a></li>\r\n      <li><a href=\"#\" [routerLink]=\"['plany/plan-treningowy',planTreningowy.nazwaPlanu,'edit']\">Edytuj</a></li>\r\n      <li><button (click)=\"usun(planTreningowy.nazwaPlanu)\">Usuń</button></li>\r\n    </ul>\r\n  </div>\r\n\r\n</div> \r\n"
 
 /***/ }),
 
@@ -466,15 +501,15 @@ var MiniaturaComponent = (function () {
     return MiniaturaComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__plan_treningowy_values__["a" /* PlanTreningowyValues */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__plan_treningowy_values__["a" /* PlanTreningowyValues */]) === "function" && _a || Object)
 ], MiniaturaComponent.prototype, "planTreningowy", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Number)
 ], MiniaturaComponent.prototype, "nr", void 0);
 MiniaturaComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-miniatura',
         template: __webpack_require__("../../../../../src/app/plany/miniatura/miniatura.component.html"),
         styles: [__webpack_require__("../../../../../src/app/plany/miniatura/miniatura.component.css")]
@@ -530,7 +565,7 @@ var PlanTreningowyService = (function () {
     return PlanTreningowyService;
 }());
 PlanTreningowyService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
     __metadata("design:paramtypes", [])
 ], PlanTreningowyService);
 
@@ -654,12 +689,12 @@ var PlanTreningowyComponent = (function () {
     return PlanTreningowyComponent;
 }());
 PlanTreningowyComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-plan-treningowy',
         template: __webpack_require__("../../../../../src/app/plany/plan-treningowy/plan-treningowy.component.html"),
         styles: [__webpack_require__("../../../../../src/app/plany/plan-treningowy/plan-treningowy.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["ActivatedRoute"]) === "function" && _a || Object])
 ], PlanTreningowyComponent);
 
 var _a;
@@ -728,7 +763,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var SzablonCwiczeniaComponent = (function () {
     function SzablonCwiczeniaComponent() {
-        this.onUsun = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */]();
+        this.onUsun = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     SzablonCwiczeniaComponent.prototype.usun = function (nr) {
         this.onUsun.emit(nr);
@@ -736,19 +771,19 @@ var SzablonCwiczeniaComponent = (function () {
     return SzablonCwiczeniaComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__szablon_cwiczenia__["a" /* SzablonCwiczenia */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__szablon_cwiczenia__["a" /* SzablonCwiczenia */]) === "function" && _a || Object)
 ], SzablonCwiczeniaComponent.prototype, "szablonCwiczenia", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Number)
 ], SzablonCwiczeniaComponent.prototype, "nr", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], SzablonCwiczeniaComponent.prototype, "onUsun", void 0);
 SzablonCwiczeniaComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-szablon-cwiczenia',
         template: __webpack_require__("../../../../../src/app/plany/szablon-cwiczenia/szablon-cwiczenia.component.html"),
         styles: [__webpack_require__("../../../../../src/app/plany/szablon-cwiczenia/szablon-cwiczenia.component.css")]
@@ -825,7 +860,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var CwiczenieComponent = (function () {
     function CwiczenieComponent() {
-        this.onUsunCwiczenie = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */]();
+        this.onUsunCwiczenie = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     CwiczenieComponent.prototype.ngOnInit = function () {
         this.cwiczenie.serie.push(new __WEBPACK_IMPORTED_MODULE_2__seria__["a" /* Seria */](10, 100));
@@ -844,19 +879,19 @@ var CwiczenieComponent = (function () {
     return CwiczenieComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__cwiczenie__["a" /* Cwiczenie */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__cwiczenie__["a" /* Cwiczenie */]) === "function" && _a || Object)
 ], CwiczenieComponent.prototype, "cwiczenie", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Number)
 ], CwiczenieComponent.prototype, "nr", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], CwiczenieComponent.prototype, "onUsunCwiczenie", void 0);
 CwiczenieComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-cwiczenie',
         template: __webpack_require__("../../../../../src/app/treningi/cwiczenie/cwiczenie.component.html"),
         styles: [__webpack_require__("../../../../../src/app/treningi/cwiczenie/cwiczenie.component.css")]
@@ -932,12 +967,12 @@ var DodajCwiczenieComponent = (function () {
     return DodajCwiczenieComponent;
 }());
 DodajCwiczenieComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-dodaj-cwiczenie',
         template: __webpack_require__("../../../../../src/app/treningi/cwiczenie/dodaj-cwiczenie/dodaj-cwiczenie.component.html"),
         styles: [__webpack_require__("../../../../../src/app/treningi/cwiczenie/dodaj-cwiczenie/dodaj-cwiczenie.component.css")]
     }),
-    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* Host */])()),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Host"])()),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__trening_trening_component__["a" /* TreningComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__trening_trening_component__["a" /* TreningComponent */]) === "function" && _a || Object])
 ], DodajCwiczenieComponent);
 
@@ -991,7 +1026,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var SeriaComponent = (function () {
     function SeriaComponent() {
-        this.onUsunSerie = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* EventEmitter */]();
+        this.onUsunSerie = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
     SeriaComponent.prototype.ngOnInit = function () {
     };
@@ -1001,19 +1036,19 @@ var SeriaComponent = (function () {
     return SeriaComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__seria__["a" /* Seria */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__seria__["a" /* Seria */]) === "function" && _a || Object)
 ], SeriaComponent.prototype, "seria", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Number)
 ], SeriaComponent.prototype, "nr", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], SeriaComponent.prototype, "onUsunSerie", void 0);
 SeriaComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-seria',
         template: __webpack_require__("../../../../../src/app/treningi/cwiczenie/seria/seria.component.html"),
         styles: [__webpack_require__("../../../../../src/app/treningi/cwiczenie/seria/seria.component.css")]
@@ -1140,7 +1175,7 @@ var TimerComponent = (function () {
     return TimerComponent;
 }());
 TimerComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-timer',
         template: __webpack_require__("../../../../../src/app/treningi/timer/timer.component.html"),
         styles: [__webpack_require__("../../../../../src/app/treningi/timer/timer.component.css")]
@@ -1252,16 +1287,16 @@ var TreningComponent = (function () {
     return TreningComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
     __metadata("design:type", Object)
 ], TreningComponent.prototype, "nazwa", void 0);
 TreningComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'app-trening',
         template: __webpack_require__("../../../../../src/app/treningi/trening/trening.component.html"),
         styles: [__webpack_require__("../../../../../src/app/treningi/trening/trening.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["ActivatedRoute"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["ActivatedRoute"]) === "function" && _a || Object])
 ], TreningComponent);
 
 var _a;
@@ -1300,10 +1335,269 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* enableProdMode */])();
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
 //# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ "../../../../moment/locale recursive ^\\.\\/.*$":
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": "../../../../moment/locale/af.js",
+	"./af.js": "../../../../moment/locale/af.js",
+	"./ar": "../../../../moment/locale/ar.js",
+	"./ar-dz": "../../../../moment/locale/ar-dz.js",
+	"./ar-dz.js": "../../../../moment/locale/ar-dz.js",
+	"./ar-kw": "../../../../moment/locale/ar-kw.js",
+	"./ar-kw.js": "../../../../moment/locale/ar-kw.js",
+	"./ar-ly": "../../../../moment/locale/ar-ly.js",
+	"./ar-ly.js": "../../../../moment/locale/ar-ly.js",
+	"./ar-ma": "../../../../moment/locale/ar-ma.js",
+	"./ar-ma.js": "../../../../moment/locale/ar-ma.js",
+	"./ar-sa": "../../../../moment/locale/ar-sa.js",
+	"./ar-sa.js": "../../../../moment/locale/ar-sa.js",
+	"./ar-tn": "../../../../moment/locale/ar-tn.js",
+	"./ar-tn.js": "../../../../moment/locale/ar-tn.js",
+	"./ar.js": "../../../../moment/locale/ar.js",
+	"./az": "../../../../moment/locale/az.js",
+	"./az.js": "../../../../moment/locale/az.js",
+	"./be": "../../../../moment/locale/be.js",
+	"./be.js": "../../../../moment/locale/be.js",
+	"./bg": "../../../../moment/locale/bg.js",
+	"./bg.js": "../../../../moment/locale/bg.js",
+	"./bm": "../../../../moment/locale/bm.js",
+	"./bm.js": "../../../../moment/locale/bm.js",
+	"./bn": "../../../../moment/locale/bn.js",
+	"./bn.js": "../../../../moment/locale/bn.js",
+	"./bo": "../../../../moment/locale/bo.js",
+	"./bo.js": "../../../../moment/locale/bo.js",
+	"./br": "../../../../moment/locale/br.js",
+	"./br.js": "../../../../moment/locale/br.js",
+	"./bs": "../../../../moment/locale/bs.js",
+	"./bs.js": "../../../../moment/locale/bs.js",
+	"./ca": "../../../../moment/locale/ca.js",
+	"./ca.js": "../../../../moment/locale/ca.js",
+	"./cs": "../../../../moment/locale/cs.js",
+	"./cs.js": "../../../../moment/locale/cs.js",
+	"./cv": "../../../../moment/locale/cv.js",
+	"./cv.js": "../../../../moment/locale/cv.js",
+	"./cy": "../../../../moment/locale/cy.js",
+	"./cy.js": "../../../../moment/locale/cy.js",
+	"./da": "../../../../moment/locale/da.js",
+	"./da.js": "../../../../moment/locale/da.js",
+	"./de": "../../../../moment/locale/de.js",
+	"./de-at": "../../../../moment/locale/de-at.js",
+	"./de-at.js": "../../../../moment/locale/de-at.js",
+	"./de-ch": "../../../../moment/locale/de-ch.js",
+	"./de-ch.js": "../../../../moment/locale/de-ch.js",
+	"./de.js": "../../../../moment/locale/de.js",
+	"./dv": "../../../../moment/locale/dv.js",
+	"./dv.js": "../../../../moment/locale/dv.js",
+	"./el": "../../../../moment/locale/el.js",
+	"./el.js": "../../../../moment/locale/el.js",
+	"./en-au": "../../../../moment/locale/en-au.js",
+	"./en-au.js": "../../../../moment/locale/en-au.js",
+	"./en-ca": "../../../../moment/locale/en-ca.js",
+	"./en-ca.js": "../../../../moment/locale/en-ca.js",
+	"./en-gb": "../../../../moment/locale/en-gb.js",
+	"./en-gb.js": "../../../../moment/locale/en-gb.js",
+	"./en-ie": "../../../../moment/locale/en-ie.js",
+	"./en-ie.js": "../../../../moment/locale/en-ie.js",
+	"./en-nz": "../../../../moment/locale/en-nz.js",
+	"./en-nz.js": "../../../../moment/locale/en-nz.js",
+	"./eo": "../../../../moment/locale/eo.js",
+	"./eo.js": "../../../../moment/locale/eo.js",
+	"./es": "../../../../moment/locale/es.js",
+	"./es-do": "../../../../moment/locale/es-do.js",
+	"./es-do.js": "../../../../moment/locale/es-do.js",
+	"./es-us": "../../../../moment/locale/es-us.js",
+	"./es-us.js": "../../../../moment/locale/es-us.js",
+	"./es.js": "../../../../moment/locale/es.js",
+	"./et": "../../../../moment/locale/et.js",
+	"./et.js": "../../../../moment/locale/et.js",
+	"./eu": "../../../../moment/locale/eu.js",
+	"./eu.js": "../../../../moment/locale/eu.js",
+	"./fa": "../../../../moment/locale/fa.js",
+	"./fa.js": "../../../../moment/locale/fa.js",
+	"./fi": "../../../../moment/locale/fi.js",
+	"./fi.js": "../../../../moment/locale/fi.js",
+	"./fo": "../../../../moment/locale/fo.js",
+	"./fo.js": "../../../../moment/locale/fo.js",
+	"./fr": "../../../../moment/locale/fr.js",
+	"./fr-ca": "../../../../moment/locale/fr-ca.js",
+	"./fr-ca.js": "../../../../moment/locale/fr-ca.js",
+	"./fr-ch": "../../../../moment/locale/fr-ch.js",
+	"./fr-ch.js": "../../../../moment/locale/fr-ch.js",
+	"./fr.js": "../../../../moment/locale/fr.js",
+	"./fy": "../../../../moment/locale/fy.js",
+	"./fy.js": "../../../../moment/locale/fy.js",
+	"./gd": "../../../../moment/locale/gd.js",
+	"./gd.js": "../../../../moment/locale/gd.js",
+	"./gl": "../../../../moment/locale/gl.js",
+	"./gl.js": "../../../../moment/locale/gl.js",
+	"./gom-latn": "../../../../moment/locale/gom-latn.js",
+	"./gom-latn.js": "../../../../moment/locale/gom-latn.js",
+	"./gu": "../../../../moment/locale/gu.js",
+	"./gu.js": "../../../../moment/locale/gu.js",
+	"./he": "../../../../moment/locale/he.js",
+	"./he.js": "../../../../moment/locale/he.js",
+	"./hi": "../../../../moment/locale/hi.js",
+	"./hi.js": "../../../../moment/locale/hi.js",
+	"./hr": "../../../../moment/locale/hr.js",
+	"./hr.js": "../../../../moment/locale/hr.js",
+	"./hu": "../../../../moment/locale/hu.js",
+	"./hu.js": "../../../../moment/locale/hu.js",
+	"./hy-am": "../../../../moment/locale/hy-am.js",
+	"./hy-am.js": "../../../../moment/locale/hy-am.js",
+	"./id": "../../../../moment/locale/id.js",
+	"./id.js": "../../../../moment/locale/id.js",
+	"./is": "../../../../moment/locale/is.js",
+	"./is.js": "../../../../moment/locale/is.js",
+	"./it": "../../../../moment/locale/it.js",
+	"./it.js": "../../../../moment/locale/it.js",
+	"./ja": "../../../../moment/locale/ja.js",
+	"./ja.js": "../../../../moment/locale/ja.js",
+	"./jv": "../../../../moment/locale/jv.js",
+	"./jv.js": "../../../../moment/locale/jv.js",
+	"./ka": "../../../../moment/locale/ka.js",
+	"./ka.js": "../../../../moment/locale/ka.js",
+	"./kk": "../../../../moment/locale/kk.js",
+	"./kk.js": "../../../../moment/locale/kk.js",
+	"./km": "../../../../moment/locale/km.js",
+	"./km.js": "../../../../moment/locale/km.js",
+	"./kn": "../../../../moment/locale/kn.js",
+	"./kn.js": "../../../../moment/locale/kn.js",
+	"./ko": "../../../../moment/locale/ko.js",
+	"./ko.js": "../../../../moment/locale/ko.js",
+	"./ky": "../../../../moment/locale/ky.js",
+	"./ky.js": "../../../../moment/locale/ky.js",
+	"./lb": "../../../../moment/locale/lb.js",
+	"./lb.js": "../../../../moment/locale/lb.js",
+	"./lo": "../../../../moment/locale/lo.js",
+	"./lo.js": "../../../../moment/locale/lo.js",
+	"./lt": "../../../../moment/locale/lt.js",
+	"./lt.js": "../../../../moment/locale/lt.js",
+	"./lv": "../../../../moment/locale/lv.js",
+	"./lv.js": "../../../../moment/locale/lv.js",
+	"./me": "../../../../moment/locale/me.js",
+	"./me.js": "../../../../moment/locale/me.js",
+	"./mi": "../../../../moment/locale/mi.js",
+	"./mi.js": "../../../../moment/locale/mi.js",
+	"./mk": "../../../../moment/locale/mk.js",
+	"./mk.js": "../../../../moment/locale/mk.js",
+	"./ml": "../../../../moment/locale/ml.js",
+	"./ml.js": "../../../../moment/locale/ml.js",
+	"./mr": "../../../../moment/locale/mr.js",
+	"./mr.js": "../../../../moment/locale/mr.js",
+	"./ms": "../../../../moment/locale/ms.js",
+	"./ms-my": "../../../../moment/locale/ms-my.js",
+	"./ms-my.js": "../../../../moment/locale/ms-my.js",
+	"./ms.js": "../../../../moment/locale/ms.js",
+	"./my": "../../../../moment/locale/my.js",
+	"./my.js": "../../../../moment/locale/my.js",
+	"./nb": "../../../../moment/locale/nb.js",
+	"./nb.js": "../../../../moment/locale/nb.js",
+	"./ne": "../../../../moment/locale/ne.js",
+	"./ne.js": "../../../../moment/locale/ne.js",
+	"./nl": "../../../../moment/locale/nl.js",
+	"./nl-be": "../../../../moment/locale/nl-be.js",
+	"./nl-be.js": "../../../../moment/locale/nl-be.js",
+	"./nl.js": "../../../../moment/locale/nl.js",
+	"./nn": "../../../../moment/locale/nn.js",
+	"./nn.js": "../../../../moment/locale/nn.js",
+	"./pa-in": "../../../../moment/locale/pa-in.js",
+	"./pa-in.js": "../../../../moment/locale/pa-in.js",
+	"./pl": "../../../../moment/locale/pl.js",
+	"./pl.js": "../../../../moment/locale/pl.js",
+	"./pt": "../../../../moment/locale/pt.js",
+	"./pt-br": "../../../../moment/locale/pt-br.js",
+	"./pt-br.js": "../../../../moment/locale/pt-br.js",
+	"./pt.js": "../../../../moment/locale/pt.js",
+	"./ro": "../../../../moment/locale/ro.js",
+	"./ro.js": "../../../../moment/locale/ro.js",
+	"./ru": "../../../../moment/locale/ru.js",
+	"./ru.js": "../../../../moment/locale/ru.js",
+	"./sd": "../../../../moment/locale/sd.js",
+	"./sd.js": "../../../../moment/locale/sd.js",
+	"./se": "../../../../moment/locale/se.js",
+	"./se.js": "../../../../moment/locale/se.js",
+	"./si": "../../../../moment/locale/si.js",
+	"./si.js": "../../../../moment/locale/si.js",
+	"./sk": "../../../../moment/locale/sk.js",
+	"./sk.js": "../../../../moment/locale/sk.js",
+	"./sl": "../../../../moment/locale/sl.js",
+	"./sl.js": "../../../../moment/locale/sl.js",
+	"./sq": "../../../../moment/locale/sq.js",
+	"./sq.js": "../../../../moment/locale/sq.js",
+	"./sr": "../../../../moment/locale/sr.js",
+	"./sr-cyrl": "../../../../moment/locale/sr-cyrl.js",
+	"./sr-cyrl.js": "../../../../moment/locale/sr-cyrl.js",
+	"./sr.js": "../../../../moment/locale/sr.js",
+	"./ss": "../../../../moment/locale/ss.js",
+	"./ss.js": "../../../../moment/locale/ss.js",
+	"./sv": "../../../../moment/locale/sv.js",
+	"./sv.js": "../../../../moment/locale/sv.js",
+	"./sw": "../../../../moment/locale/sw.js",
+	"./sw.js": "../../../../moment/locale/sw.js",
+	"./ta": "../../../../moment/locale/ta.js",
+	"./ta.js": "../../../../moment/locale/ta.js",
+	"./te": "../../../../moment/locale/te.js",
+	"./te.js": "../../../../moment/locale/te.js",
+	"./tet": "../../../../moment/locale/tet.js",
+	"./tet.js": "../../../../moment/locale/tet.js",
+	"./th": "../../../../moment/locale/th.js",
+	"./th.js": "../../../../moment/locale/th.js",
+	"./tl-ph": "../../../../moment/locale/tl-ph.js",
+	"./tl-ph.js": "../../../../moment/locale/tl-ph.js",
+	"./tlh": "../../../../moment/locale/tlh.js",
+	"./tlh.js": "../../../../moment/locale/tlh.js",
+	"./tr": "../../../../moment/locale/tr.js",
+	"./tr.js": "../../../../moment/locale/tr.js",
+	"./tzl": "../../../../moment/locale/tzl.js",
+	"./tzl.js": "../../../../moment/locale/tzl.js",
+	"./tzm": "../../../../moment/locale/tzm.js",
+	"./tzm-latn": "../../../../moment/locale/tzm-latn.js",
+	"./tzm-latn.js": "../../../../moment/locale/tzm-latn.js",
+	"./tzm.js": "../../../../moment/locale/tzm.js",
+	"./uk": "../../../../moment/locale/uk.js",
+	"./uk.js": "../../../../moment/locale/uk.js",
+	"./ur": "../../../../moment/locale/ur.js",
+	"./ur.js": "../../../../moment/locale/ur.js",
+	"./uz": "../../../../moment/locale/uz.js",
+	"./uz-latn": "../../../../moment/locale/uz-latn.js",
+	"./uz-latn.js": "../../../../moment/locale/uz-latn.js",
+	"./uz.js": "../../../../moment/locale/uz.js",
+	"./vi": "../../../../moment/locale/vi.js",
+	"./vi.js": "../../../../moment/locale/vi.js",
+	"./x-pseudo": "../../../../moment/locale/x-pseudo.js",
+	"./x-pseudo.js": "../../../../moment/locale/x-pseudo.js",
+	"./yo": "../../../../moment/locale/yo.js",
+	"./yo.js": "../../../../moment/locale/yo.js",
+	"./zh-cn": "../../../../moment/locale/zh-cn.js",
+	"./zh-cn.js": "../../../../moment/locale/zh-cn.js",
+	"./zh-hk": "../../../../moment/locale/zh-hk.js",
+	"./zh-hk.js": "../../../../moment/locale/zh-hk.js",
+	"./zh-tw": "../../../../moment/locale/zh-tw.js",
+	"./zh-tw.js": "../../../../moment/locale/zh-tw.js"
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "../../../../moment/locale recursive ^\\.\\/.*$";
 
 /***/ }),
 
