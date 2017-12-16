@@ -236,7 +236,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/kalendarz/kalendarz.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  kalendarz works!\n  <br>\n  <br>\n  <br>\n  <br>\n  <p-schedule [events]=\"events\"></p-schedule>\n</p>\n"
+module.exports = "<p>\n  kalendarz works!\n  <br>\n  <br>\n  <br>\n  <br>\n  <p-schedule (onEventClick)=\"handleEventClick($event)\" [events]=\"events\"></p-schedule>\n</p>\n"
 
 /***/ }),
 
@@ -262,6 +262,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var KalendarzComponent = (function () {
     function KalendarzComponent() {
     }
+    KalendarzComponent.prototype.handleEventClick = function (e) {
+        debugger;
+        //e.calEvent = Selected event
+        //e.jsEvent = Browser click event
+        //e.view = Current view object
+    };
     KalendarzComponent.prototype.ngOnInit = function () {
         this.events = [
             {
